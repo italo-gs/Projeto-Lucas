@@ -10,7 +10,7 @@
 <body>
     <div>
         <header>
-            <h1>Lista de Tarefas</h1>
+            <h1>@yield('lista_de', 'Lista de Tarefas')</h1>
         </header>
     </div>
 
