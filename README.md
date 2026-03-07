@@ -52,3 +52,8 @@ Exemplo de criação de módulo (criando módulo `Tarefa`):
 ```bash
 docker compose exec app php artisan make:model Tarefa -mcr
 ```
+
+Exemplo de criação de uma nova `migration`:
+```bash
+docker compose exec app php artisan make:migration nome_da_migration
+```
