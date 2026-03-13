@@ -7,7 +7,7 @@
         @csrf
         @include('tarefas._form')
         <div>
-            <button>Salvar</button>
+            <button class="rounded-lg border-2 bg-indigo-600 px-8 text-white font-bold uppercase">Salvar</button>
             <a href="{{ route('tarefas.index') }}">Voltar</a>
         </div>
     </form>
