@@ -46,7 +46,7 @@ Migre o banco:
 docker compose exec app php artisan migrate
 ```
 
----
+## Outros exemplos
 
 Exemplo de criação de módulo (criando módulo `Tarefa`):
 ```bash
@@ -56,4 +56,9 @@ docker compose exec app php artisan make:model Tarefa -mcr
 Exemplo de criação de uma nova `migration`:
 ```bash
 docker compose exec app php artisan make:migration nome_da_migration
+```
+
+Exemplo de criação de um novo projeto `Laravel`:
+```bash
+docker compose run --rm app composer create-project laravel/laravel .
 ```
