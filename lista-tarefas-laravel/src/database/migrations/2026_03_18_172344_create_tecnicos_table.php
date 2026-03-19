@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarefas', function (Blueprint $table) {
+        Schema::create('tecnicos', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo', 80);
-            $table->text('descricao')->nullable();
-            $table->enum('status', ['pendente', 'fazendo', 'finalizada']);
-            $table->timestamps(); #cria duas colunas: created_at e updated_at
+            $table->string('nome');
+            $table->string('email')->unique();
+            $table->string('especialidade');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarefas');
+        Schema::dropIfExists('tecnicos');
     }
 };

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Tecnico extends Model
 {
-    protected $fillable = ['nome', 'sla_horas'];
+    protected $fillable = ['nome', 'email', 'especialidade'];
 
     public function chamados() {
         return $this->hasMany(Chamado::class);

@@ -1,28 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Lista de Tarefas')</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Sistema de Chamados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <div>
-        <header>
-            <h1 class="border-l-8 border-indigo-600 pl-4 text-4xl font-bold text-gray-800">@yield('lista_de', 'Lista de Tarefas')</h1>
-        </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('chamados.index') }}">HelpDesk</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('chamados.index') }}">Chamados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tecnicos.index') }}">Técnicos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
+        @yield('content')
     </div>
 
-    @if(session('ok'))
-    <div>
-        {{ session('ok') }}
-    </div>
-    @endif
-
-    @yield('content')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
