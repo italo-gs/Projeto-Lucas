@@ -29,16 +29,13 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        // 1. Valida se os dados vieram preenchidos corretamente
         $dados = $request->validate([
             'nome' => 'required|string|max:255',
             'sla_horas' => 'required|integer|min:1',
         ]);
 
-        // 2. Salva no banco de dados
         Categoria::create($dados);
 
-        // 3. Redireciona de volta para a lista com uma mensagem de sucesso
         return redirect()->route('categorias.index')->with('success', 'Categoria cadastrada com sucesso!');
     }
 

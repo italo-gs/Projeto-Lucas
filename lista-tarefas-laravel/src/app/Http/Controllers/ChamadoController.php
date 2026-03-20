@@ -13,7 +13,7 @@ class ChamadoController extends Controller
     {
         $query = Chamado::with(['tecnico', 'categoria']);
 
-        // Regra: Filtro por prioridade e status
+        // Filtro por prioridade e status
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
@@ -21,7 +21,7 @@ class ChamadoController extends Controller
             $query->where('prioridade', $request->prioridade);
         }
 
-        // Regra: Ordenação automática (Alta > Média > Baixa) e data
+        // Ordenação automática (Alta > Média > Baixa) e data
         $query->orderByRaw("FIELD(prioridade, 'alta', 'média', 'baixa')")
               ->orderBy('data_abertura', 'asc');
 
@@ -77,7 +77,6 @@ class ChamadoController extends Controller
             'categoria_id' => 'required|exists:categorias,id',
         ]);
 
-        // Regra de Negócio 1: Chamado só pode ser fechado se estiver resolvido
         if ($dados['status'] === 'fechado' && $chamado->status !== 'resolvido') {
             return back()->withErrors(['status' => 'Um chamado só pode ser fechado se já estiver com o status "resolvido".'])->withInput();
         }

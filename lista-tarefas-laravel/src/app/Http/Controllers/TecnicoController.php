@@ -63,7 +63,7 @@ class TecnicoController extends Controller
     {
         $dados = $request->validate([
             'nome' => 'required|string|max:255',
-            // A linha abaixo permite manter o mesmo email sem dar erro de "email único"
+            // Essa linha a baixo impede que seja causado um erro de "email já existente" ou algo semelhante
             'email' => 'required|email|unique:tecnicos,email,' . $tecnico->id,
             'especialidade' => 'required|string|max:255',
         ]);
