@@ -73,7 +73,6 @@ class ChamadoController extends Controller
             'descricao' => 'required|string',
             'prioridade' => 'required|in:baixa,média,alta',
             'status' => 'required|in:aberto,em_atendimento,resolvido,fechado',
-            'data_abertura' => 'required|date',
             'tecnico_id' => 'required|exists:tecnicos,id',
             'categoria_id' => 'required|exists:categorias,id',
         ]);

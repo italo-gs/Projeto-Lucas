@@ -5,9 +5,25 @@
     </div>
 
     <div class="col-md-4 mb-3">
-        <label class="form-label">Data de Abertura</label>
-        <input type="date" class="form-control @error('data_abertura') is-invalid @enderror" name="data_abertura" value="{{ old('data_abertura', isset($chamado) ? $chamado->data_abertura->format('Y-m-d') : date('Y-m-d')) }}" required>
-    </div>
+    <label class="form-label">Data de Abertura</label>
+    
+    @if(isset($chamado))
+        {{-- Modo Edição: Campo apenas leitura e visual --}}
+        <input type="text" 
+               class="form-control bg-light" 
+               value="{{ $chamado->data_abertura->format('d/m/Y') }}" 
+               readonly>
+        <small class="text-muted">A data não pode ser alterada!</small>
+        
+    @else
+        {{-- Modo Criação: Campo liberado --}}
+        <input type="date" 
+               class="form-control @error('data_abertura') is-invalid @enderror" 
+               name="data_abertura" 
+               value="{{ old('data_abertura', date('Y-m-d')) }}" 
+               required>
+    @endif
+</div>
 </div>
 
 <div class="mb-3">
