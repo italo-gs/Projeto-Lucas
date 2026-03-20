@@ -32,6 +32,11 @@ class Chamado extends Model
         }
 
         $prazoFinal = Carbon::parse($this->data_abertura)->addHours($this->categoria->sla_horas);
-        return now()->greaterThan($prazoFinal);
+
+        if (now()->greaterThan($prazoFinal)) {
+            return true;
+        }
+
+        return false;
     }
 }
