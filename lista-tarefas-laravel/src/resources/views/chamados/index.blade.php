@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Chamados Técnicos</h2>
+    <h2>Chamados</h2>
     <a href="{{ route('chamados.create') }}" class="btn btn-primary">Novo Chamado</a>
 </div>
 

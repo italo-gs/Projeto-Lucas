@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Categorias de Chamados</h2>
+    <h2>Categorias</h2>
     <a href="{{ route('categorias.create') }}" class="btn btn-primary">Nova Categoria</a>
 </div>
 
