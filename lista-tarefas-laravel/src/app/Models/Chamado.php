@@ -28,15 +28,19 @@ class Chamado extends Model
     public function getSlaEstouradoAttribute()
     {
         if (in_array($this->status, ['resolvido', 'fechado'])) {
-            return false;
-        }
-
-        $prazoFinal = Carbon::parse($this->data_abertura)->addHours($this->categoria->sla_horas);
-
-        if (now()->greaterThan($prazoFinal)) {
-            return true;
-        }
-
         return false;
     }
+
+    // teste para corrigir problema do sistema considerar o SLA estourado
+       if (!$this->categoria || !$this->categoria->sla_horas) {
+        return false;
+    }
+
+    // Use o parse garantindo que o Carbon entenda o fuso horário da aplicação
+    $prazoFinal = $this->created_at->addHours($this->categoria->sla_horas);
+
+    return now()->greaterThan($prazoFinal);
+
+    }
+
 }
